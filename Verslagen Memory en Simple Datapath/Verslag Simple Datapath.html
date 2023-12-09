@@ -1,0 +1,138 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<style type="text/css">
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1, h2, h3 {
+    color: #2c3e50;
+    border-bottom: 2px solid #dfe6e9;
+    padding-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  b {
+    font-weight: bold;
+  }
+
+  i {
+    font-style: italic;
+    color: #7f8c8d;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  ul li {
+    background: #ecf0f1;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  a {
+    color: #2980b9;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+</style>
+</head>
+
+<body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Simple Datapath</i></p>
+<p>Dit verslag werd opgesteld door: Lorek Jeremi en Faisal Mohamed Ahmed<br />
+<ul>
+<li><b>Naam:</b> <i>Lorek Jeremi</i><br />
+<b>Studentennummer:</b> <i>20231362</i><br />
+<b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Faisal Mohamed Ahmed</i><br />
+<b>Studentennummer:</b> <i>20203014</i><br />
+<b>Email adres:</b> <i>Faisal.MohamedAhmed@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>35 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>9.5</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="Foto's/ProgramCounter.png">Program Counter</a>: foto van de program counter</li>
+<li><a href="Foto's/Decoder.png">Decoder</a>: foto van de decoder</li>
+<li><a href="Foto's/registerfilemodified.png">register file (modified)</a>: foto van de register file</li>
+<li><a href="Foto's/Controller.png">Controller</a>: foto van de controller</li>
+<li><a href="Foto's/SimpleDatapath.png">Simple Datapath</a>: foto van de volledige implementatie van het Datapath</li>
+<li><a href="SD_Group65.circ">SimpleDatapath.circ</a>: Logisim (.circ) file van dit project</li>
+</ul>
+
+<h2>Verslag</h2>
+
+<h3>Program Counter</h3>
+<p>Als eerste opdracht moesten we een program counter maken.</p>
+<img src="Foto's/ProgramCounter.png">
+<p>Voor onze program counter hebben we de gegeven inputs en outputs gebruikt, namelijk 2 adders en 1 12-bit register.</p>
+<p>De PC (program counter) telt elke keer met 1 op. Dit kan veranderen door de branch relative of branch absolute. Als de branch relative input op 1 staat wordt er niet meer met 1 opgetelt maar er wordt opgeteld met de branch value zelf (in de 2's complement waarde). Als de branch absolute op 1 staat, dan wordt de output (instruction adress) meteen op de branch value zelf gezet.</p>
+<p>Dit hebben we kunnen implementeren door gebruik te maken van multiplexers zodat de output overeenkomt met de inputs.</p>
+<br>
+<br>
+<br>
+<h3>Decoder</h3>
+<p>Als tweede opdracht hebben we een Decoder gemaakt.</p>
+<img src="Foto's/Decoder.png">
+<p>Onze decoder hebben we gebouwd met de gegeven inputs en outputs en verschillende comparators. We keken naar de tabel uit de opgave en stelden een soort van 'if-conditions' op, die we dan implementeerden door gebruik te maken van comparators. Bijvoorbeeld als de 12-,13-,14- en 15-de (samen) bit groter is dan 0001 en kleiner dan 1010 dan is er een waarde voor rt. Zo hebben we dit gedaan voor alle outputs.</p>
+<br>
+<br>
+<br>
+<h3>Controller</h3>
+<p>Als derde opdracht hebben we een controller gemaakt.</p>
+<img src="Foto's/Controller.png">
+<p>De inputs zijn zoals in de opgave gegeven, de operation code en de function code.</p>
+<p>Voor de outputs hebben we de:</p>
+<p>- ALUop : Deze is de ALU-code, die ervoor zorgt dat de juiste bewerking wordt gedaan. Dit hebben we gedaan door elke operatie te maken en te verbinden met de juiste delen van de output.</p>
+<p>- ALUsrc : Deze kiest of we de immediate of T als tweede output pakken bij de ALU. De ALUsrc kan enkel aan gaan als er een immediate is, dus hebben we alle operations die immediate bevatten door een OR-gate verbonden met de output.</p>
+<p>- MemToReg: Selecteert gegevens om naar de register file te sturen om te schrijven. We doen dit door de operatie LW te verbinden met de output.</p>
+<p>- MemRead: Vertelt het geheugen om te lezen. We doen dit door de operatie LW te verbinden met de output.</p>
+<p>- MemWrite : Vertelt het geheugen om een schrijfactie uit te voeren. We doen dit door de operatie SW te verbinden met de output.</p>
+<br>
+<br>
+<br>
+<h3>Modified register file</h3>
+<p>Voor de werking van het Datapath moesten we ons register file een beetje aanpassen.</p>
+<img src="Foto's/registerfilemodified.png">
+<p>Hierbij is elk register apart nu een output.</p>
+<br>
+<br>
+<br>
+<h3>Datapath</h3>
+<img src="Foto's/SimpleDatapath.png">
+<p>Met al onze bouwstenen (ALU, register file, PC, RAM-blokjes, Decoder en controller) kunnen we nu ons Datapath opstellen. We plaatsen eerst onze PC die we verbinden met het eerste RAM-blokje, dat we op de juiste instellingen hebben gezet die hier nodig zijn. We verbonden dan al alle mogelijke verbindingen zoals de reset en klok en bij de PC ook constanten voor de branch relative/absolute. Daarna plaatsten we onze decoder, controller en Register file die wij dan ook telkens verbonden met elkaar. Hierna plaatsten we de ALU en het tweede RAM-blokje. We gebruiken multiplexers om er zeker van te zijn dat de ALU de juiste input krijgt (Bij één van de multiplexers wordt gebruik gemaakt van de ALUsrc). De ALUop output is natuurlijk de operation code van de ALU. De output van de ALU gaat dan vervolgens in maar ook naast het RAM-blokje. Deze twee delen van de ALU output (het deel rechtstreeks uit de ALU en het deel dat uit het RAM-blokje komt) steken we dan in een multiplexer die beslist welke van de twee wordt gekozen. De input om de keuze te maken is de MemToReg. De output van deze laatste multiplexer gaat dan natuurlijk in de Data input van de register file.</p>
+<p>In ons datapath zijn er ook twee comparators te vinden. Deze zijn gebruikt om enkele problemen op te lossen, die tijdens het testen van het Datapath, werden gevonden.</p>
+</body>
+</html>

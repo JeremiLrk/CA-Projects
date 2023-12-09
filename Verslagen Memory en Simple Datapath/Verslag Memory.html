@@ -1,0 +1,129 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<style type="text/css">
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1, h2, h3 {
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  b {
+    color: #333;
+  }
+
+  i {
+    color: #555;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    background: #eaeaea;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  a {
+    color: #06c;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  u {
+    text-decoration: overline;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Memory</i></p>
+<p>Dit verslag werd opgesteld door: Lorek Jeremi en Faisal Mohamed Ahmed<br />
+<ul>
+<li><b>Naam:</b> <i>Lorek Jeremi</i><br />
+<b>Studentennummer:</b> <i>20231362</i><br />
+<b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i>
+</li>
+<li><b>Naam:</b> <i>Faisal Mohamed Ahmed</i><br />
+<b>Studentennummer:</b> <i>20203014</i><br />
+<b>Email adres:</b> <i>Faisal.MohamedAhmed@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>5 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>6</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="Foto's/12bitregister.png">12-bit register</a>: foto van het 12 bit register</li>
+<li><a href="Foto's/counter.png">counter</a>: foto van de counter</li>
+<li><a href="Foto's/registerfile.png">register file</a>: foto van de register file</li>
+<li><a href="Foto's/traficlight.png">traffic light</a>: foto van een implementatie van een infinite state machine (traffic light)</li>
+<li><a href="CSA 4.circ">CSA 4</a>: Logisim (.circ) file van dit project</li>
+
+</ul>
+
+<h2>Verslag</h2>
+
+<h3>Oefening 1</h3>
+<p>Voor de eerste oefening hebben we een 12-bit register gemaakt. </p>
+<img src="Foto's/12bitregister.png">
+<p>Om een 12-bits register te bouwen met D flip-flops, hebben we de flip-flops op falling edge gezet. De reset zorgt ervoor dat alle flip-flops op nul gezet worden wanneer dit signaal actief is. De write control laat toe om data op te slaan als dit signaal hoog is.</p>
+<p>Vervolgens hebben we alles verbonden op de plaats waar het hoort.</p>
+<br>
+<br>
+<br>
+<h3>Oefening 2</h3>
+<p>Voor de tweede oefening moesten we een register file maken. </p>
+<img src="Foto's/registerfile.png">
+<p>Hierbij hebben we gebruik gemaakt van de gegeven inputs uit de opgave, de gegeven outputs, een decoder voor de rd input te bepalen, 8 12-bit registers en 2 multiplexers die als hun operatiecode rs en rt hebben. De eerste multiplexer, met als operatiecode rs, is verbonden met de output S en de andere heeft als operatiecode de input rt met als output T. </p>
+<p>Bij het allereerste 12-bit register zijn de data input en de write input 0. Daarna verbinden we de data input met alle andere 12-bit registers. Hetzelfde deden we met de reset. Voor de write input van de 12-bit registers gebruiken we een AND-gate waarvan 1 input de write input is  en de anderen een input van de decoder. </p>
+<p>De outputs van de 12-bit registers gaan in beide multiplexers op hun plaats. De multiplexers hebben, zoals eerder vermeld, de operatie codes rs en rt en als output respectievelijk S en T. </p>
+<br>
+<br>
+<br>
+<h3>Oefening 3</h3>
+<p>Voor de derde oefening moesten we een counter maken. </p>
+<img src="Foto's/counter.png">
+<p>Om onze counter te bouwen, hebben we gebruik gemaakt van volgende bouwblokken: onze 12-bit CLA uit het project van adders en onze 12-bit register. We hebben ook nog gebruik gemaakt van een comparator zodat we kunnen aangeven wanneer deze moet (stoppen met) optellen.</p>
+<p>De inputs zijn een 12-bit input, waaraan we de waarde geven tot welke de counter moet tellen en eveneens de klok. De output is natuurlijk de teller die aangeeft tot hoeveel er geteld is op dat moment.</p>
+<p>De counter werkt door telkens 1 op te tellen bij de vorige waarde.</p>
+<br>
+<br>
+<br>
+<h3>Oefening 4</h3>
+<p>Voor de vierde oefening moesten we een traffic light maken door gebruik te maken van onze counter. </p>
+<img src="Foto's/traficlight.png">
+<p>We zijn begonnen door de counter een input 01c te geven. Dit zorgt ervoor dat de counter zal tellen tot 28 seconden en dan terug opnieuw zal beginnen. Dan hebben we comparators gebruikt om een soort 'conditions' (vergelijkbaar met if-statements in programmeertaal) te maken voor de counter. De waarde waarmee vergelijkt wordt, zijn waarden die op de grenzen liggen waarbij er van kleur wordt veranderd in de opdracht. Door nog een beetje logica te gebruiken hebben we de outputs van de comparator verbonden met de lichten zodat het overeenkomt met de 'tijdlijn' uit de opgave. De lichten hebben we ook nog een kleur gegeven (rood,oranje en groen). </p>
+</body>
+</html>
