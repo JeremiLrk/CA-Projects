@@ -1,0 +1,123 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}
+</style>
+
+</head>
+
+<body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>ALU</i></p>
+<p>Dit verslag werd opgesteld door: Lorek Jeremi en Faisal Mohamed Ahmed<br />
+<ul>
+<li><b>Naam:</b> <i>Lorek Jeremi</i><br />
+<b>Studentennummer:</b> <i>20231362</i><br />
+<b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i>
+</li>
+<b>Naam:</b> <i>Faisal Mohamed Ahmed</i><br />
+<b>Studentennummer:</b> <i>20203014</i><br />
+<b>Email adres:</b> <i>Faisal.MohamedAhmed@student.uantwerpen.be</i>
+
+</ul>
+<b>Aantal man-uren besteed:</b> <i>30 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>7,5</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="Foto/add.png">add.png</a>: foto van de ADD operatie in Logisim</li>
+<li><a href="Foto/ALU.png">ALU.png</a>: foto van de volledige ALU</li>
+<li><a href="Foto/and.png">eand.png</a>: foto van de AND operatie</li>
+<li><a href="Foto/eq.png">eq.png</a>: foto van de EQ operatie</li>
+<li><a href="Foto/gt.png">gt.png</a>: foto van de GT operatie</li>
+<li><a href="Foto/inv.png">inv.PNG</a>: foto van de INV operatie</li>
+<li><a href="Foto/lt.png">lt.png</a>: foto van de LT operatie</li>
+<li><a href="Foto/neq.png">neq.png</a>: foto van de NEQ operatie</li>
+<li><a href="Foto/noop.png">noop.png</a>: foto van de NOOP operatie</li>
+<li><a href="Foto/not.png">not.png</a>: foto van de NOT operatie</li>
+<li><a href="Foto/or.png">or.png</a>: foto van de OR operatie</li>
+<li><a href="Foto/sla.png">sla.png</a>: foto van de SLA operatie</li>
+<li><a href="Foto/sll.png">sll.png</a>: foto van de SLL operatie</li>
+<li><a href="Foto/sra.png">sra.png</a>: foto van de SRA operatie</li>
+<li><a href="Foto/srl.png">srl.png</a>: foto van de SRL operatie</li>
+<li><a href="Foto/sub.png">sub.png</a>: foto van de SUB operatie</li>
+<li><a href="Foto/zero.png">zero.png</a>: foto van de ZERO operatie</li>
+<li><a href="ALU_Group65.circ">ALU_Group65.circ</a>: Het logisim bestand van dit project</li>
+
+</ul>
+
+<h2>Verslag</h2>
+
+<section>
+    <h2>Oefening 1</h2>
+    <p>Om te beginnen moeten we alle operaties van de ALU creëren.</p>
+    <h4>generate 0</h4>
+    <img src="Foto/zero.png">
+    <p>Je zet een constante met waarde 0 voor elke 4 bits.</p>
+    <h4>NOT</h4>
+    <img src="Foto/not.png">
+    <p>Je gebruikt een NOT-gate met 12 data bits.</p>
+    <h4>AND</h4>
+    <img src="Foto/and.png">
+    <p>2 inputs verbonden met een AND gate (de gate heeft 12 data bits) die dan naar een output gaan.</p>
+    <h4>OR</h4>
+    <img src="Foto/or.png">
+    <p>2 inputs verbonden met een OR gate (de gate heeft 12 data bits) die dan naar een output gaan.</p>
+    <h4>numeric addition (two’s complement) </h4>
+    <img src="Foto/add.png">
+    <p>Optelling van 2 binaire getallen door gebruik te maken van de carry lookahead van project 2. De CarryIn is een constante 0 en er is naast de sum ook nog een output voor overflow.</p>
+    <h4>numeric subtraction (two’s complement) </h4>
+    <img src="Foto/sub.png">
+    <p>In dit circuit wordt de aftrekking van binaire getallen bereikt door de NOT-gates die de bits van het getal b omkeren, waardoor het one's complement van b wordt gecreëerd. Vervolgens zorgt de extra '1' die aan het circuit wordt toegevoegd voor de conversie naar two's complement. </p>
+    <h4>less than (two’s complement) </h4>
+    <img src="Foto/lt.png">
+    <p>Dit circuit implementeert een 'kleiner dan' functie (less than) met behulp van een substractor. De subtractor voert een aftrekking a - b uit, en als a kleiner is dan b, zal het resultaat negatief zijn, wat in een binair systeem wordt weergegeven als een '1' op de meest significante bit (MSB) van het resultaat, als we two's complement notatie gebruiken. De XOR-poort zorgt dat als er Overflow is dat het resultaat verbetert wordt en niet verkeerd wordt gegeven in de output.</p>
+    <h4>greater than (two’s complement) </h4>
+    <img src="Foto/gt.png">
+    <p>Dezelfde logica als daarnet maar dan met NOT van de eerste input.</p>
+    <h4>equals</h4>
+    <img src="Foto/eq.png">
+    <p>Er wordt gebruik gemaakt van XNOR-gates want bij een XNOR-gate is de output enkel 1 als beide inputs gelijk zijn aan elkaar. Al deze inputs in 1 AND-gate zorgt voor de output.</p> 
+    <h4>not equals</h4>
+    <img src="Foto/neq.png">
+    <p>Hetzelfde als hierboven maar de output wordt ge-NOT.</p>
+    <h4>numeric inverse (two’s complement) </h4>
+    <img src="Foto/inv.png">
+    <p>De numerieke inverse wordt berekent door gebruik te maken van de add functie, die we eerder hadden gecreëerd. De input wordt ge-NOT en vervolgens opgeteld met 1 om de gevraagde inverse te bekomen. Er is nog een output voor Overflow voor als het gevraagde getal niet in de range is van de output.</p>
+    <h4>shift left logical (two’s complement)</h4>
+    <img src="Foto/sll.png">
+    <p>Alle bits worden met 1 plaats naar links verschoven</p>
+    <h4>shift right logical (two’s complement) </h4>
+    <img src="Foto/srl.png">
+    <p>Alle bits worden met 1 plaats naar rechts verschoven.</p>
+    <h4>shift left arithmetic (two’s complement)</h4>
+    <img src="Foto/sla.png">
+    <p>Het binaire getal wordt met zichzelf opgeteld. We maken gebruik van de add functie die eerder gedefinieerd is.</p>
+    <h4>shift right arithmetic (two’s complement) </h4>
+    <img src="Foto/sra.png">
+    <p>De input waarde wordt gedeeld door 2 door alle bits met 1 plaats naar rechts te verschuiven. Indien de MSB van de output 1 is dan moet, dat ook zo zijn bij de output, daarom wordt er gebruik gemaakt van de AND-gate.</p>
+    <h4>no operation</h4>
+    <img src="Foto/noop.png">
+    <p>Er gebeurt niks, de input is dezelfde als de output.</p>
+</section>
+
+<section>
+    <h2>Oefening 2</h2>
+    <p>Nu gaan we de ALU implementeren. Om de ALU-codes te doen werken hebben we een multiplexer nodig. De 4 bit input voor de ALU-code verbinden we met de multiplexer en dan verbinden we al de functies op volgorde met de multiplexer. Deze multiplexer verbinden we dan uiteindelijk met de output van 12 bits. We verbinden dan al de functies hun inputs met de inputs a en b waar nodig. Uiteindelijk pakken we nog een tweede multiplexer voor de overflow. De output van de multiplexer verbinden we met de overflow output. De inputs van de multiplexer worden verbonden met de functies die een overflow hebben.</p>
+    <img src="Foto/ALU.png"
+</section>
+
+<section>
+    <h2>Controle</h2>
+    <p>Na alles te testen met het gegeven python script, blijkt het dat er in de functies geen errors of fouten zijn.</p>
+</section>
+
+    </body>
+
+</html>
+
+

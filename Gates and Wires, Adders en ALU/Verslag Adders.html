@@ -1,0 +1,101 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}
+</style>
+
+</head>
+
+<body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Adders</i></p>
+<p>Dit verslag werd opgesteld door: Lorek Jeremi en Faisal Mohamed Ahmed<br />
+<ul>
+<li><b>Naam:</b> <i>Lorek Jeremi</i><br />
+<b>Studentennummer:</b> <i>20231362</i><br />
+<b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i>
+</li>
+<b>Naam:</b> <i>Faisal Mohamed Ahmed</i><br />
+<b>Studentennummer:</b> <i>20203014</i><br />
+<b>Email adres:</b> <i>Faisal.MohamedAhmed@student.uantwerpen.be</i>
+
+</ul>
+<b>Aantal man-uren besteed:</b> <i>13 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>9</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="Foto/exercise2.1.png">exercise2.1.png</a>: foto van exercise 1</li>
+<li><a href="Foto/exercise2.2.png">exercise2.2.png</a>: foto van exercise 2</li>
+<li><a href="Foto/exercise2.3.1.png">exercise2.3.1.png</a>: foto van exercise 3 (3 bit adder)</li>
+<li><a href="Foto/exercise2.3.2.png">exercise2.3.2.png</a>: foto van exercise (Carry lookahead)</li>
+<li><a href="Foto/exercise2.4.png">exercise2.4.png</a>: foto van exercise 4</li>
+<li><a href="Foto/waarheidstabel2.1.PNG">waarheidstabel2.1.PNG</a>: foto van waarheidstabel van exercise 1</li>
+<li><a href="CSA%202.circ">CSA 2.circ</a>: Logisim bestand van Project 2</li>
+
+
+</ul>
+
+<h2>Verslag</h2>
+
+
+<section>
+  <h2>Oefening 1</h2>
+  <p>Eerst maken we de waarheidstabel en halen daaruit de Booleaanse expressies</p>
+  <img src="Foto/waarheidstabel2.1.PNG">
+  <p>de Booleaanse expressies die hieruit volgen zijn:</p>
+  <p>sum = (A.!B.!CarryIn )+ (!A.B.!CarryIn )+ (!A.!B.CarryIn) + (A.B.CarryIn)</p>
+  <p>Als A.B.CarryIn waar is, moeten alle andere drie termen ook waar zijn. We kunnen de vergelijking dus vereenvoudigen tot:</p>
+  <p>CarryOut = (B .CarryIn) + (A.CarryIn) + (A.B)</p> 
+    <p><i>Implementatie in Logisim:</i></p>
+   <img src="Foto/exercise2.1.png">
+</section>
+   
+<section>
+    <h2>Oefening 2</h2>
+    <p>Om een 12-bit two's complement ripple carry adder te maken, zullen we 12 full 1-bit adders aan elkaar moeten hangen. De eerste 1-bit Full Adder is de adder die de additie doet voor de LSB (least significant bit). In de CarryIn van de full adder gaat er een aparte CarryIn. Vervolgens verbinden we elke Full Adder zijn CarryOut met de CarryIn van de volgende Full Adder. In de eerste Full Adder gaat ook de a0 - bit en b0-bit van de 12-bit inputs A en B. In de tweede Full Adder komt dan a1 en b1, enz.</p>
+    <p>De sum output van elke Full Adder gaat respectievelijk naar zijn plek in 12-bit output sum.</p>
+    <p>De laatste Full Adder doet de additie voor de MSB (most significant bit), als er hierbij een CarryOut is met waarde 1, betekent dat, dat er Overflow is. </p>
+    <p><i>Implementatie in Logisim:</i></p>
+    <img src="Foto/exercise2.2.png">
+</section>
+   
+<section>
+    <h2>Oefening 3</h2>
+    <p>Voor deze oefening zullen we eerst een 4-bit adder moeten bouwen.</p>
+    <p>We hebben 9 inputs nodig (8 zoals in de opgave en 1 carryIn) en we gaan uiteindelijk 7 outputs hebben (6 uit de opgave en 1 voor overflow). We zullen ook gebruik maken van 4 Full Adders als bouwblokken.</p>
+    <p>Eerst maken we alle propagates en generates van ai en bi. Als we kijken naar de definities van propagate en generate, kunnen we volgende CarryIn's maken.</p>
+    <p>c1 = g0 + (p0 . c0)</p>
+    <p>c2 = g1 + (p1 . g0) + (p1 . p0 . c0)</p>
+    <p>c3 = g2 + (p2 . g1 ) + (p2 . p1 . g0) + (p2 . p1 . p0 . c0)</p>
+    <p>c4 = g3 + (p3 . g2) + (p3 . p2 . g1) + (p3 . p2 p1 . g0) + (p3 . p2 . p1 . p0 . c0)</p>
+    <p>Deze CarryIn's verbinden we dan met de CarryIn input van hun respectievelijke Full adder. De eerste Full Adder krijgt c0 als CarryIn input, de tweede c1, enzovoort. De andere twee inputs zijn zoals altijd een a bit en een b bit. De output verbinden we dan met hun respectievelijke s output (behalve de laatste). Bij de laatste Full Adder verbinden we zijn output, de CarryOut, met een xor-gate. Na deze xor-gate komt de Overflow. We gebruiken deze xor-gate omdat het anders foutieve overflow kan geven. (vb. 1100 + 1101 zou overflow geven zonder xor-gate, wat niet zo moet zijn) Daarom zetten we een xor-gate er nog bij, die verbonden is met c3. </p>
+    <p>Om onze 4-bit adder compleet te maken moeten we nog de outputs P0 en G0 juist verbinden. P0 is gewoon een AND van alle lagere level propagates. Dus we verbinden p0,p1,p2 en p3 met 1 AND gate en we krijgen dan onze super propagate P0.</p>
+    <p>De super generates kunnen gevonden worden met volgende formule: G0 = g3 + (p3.g2) + (p3.p2.g1) + (p3.p2.p1.g0). Dus hiervoor zal je 3 AND gates en 1 OR gate nodig hebben.</p>
+    <p><i>Implementatie in Logisim:</i></p>
+    <img src= "Foto/exercise2.3.1.png">
+    <p>Voor de 12-bit 2's complement carry lookahead zullen we 3 van deze 4-bit adders moeten gebruiken. We verbinden de inputs a en b met hun respectievelijke inputs in de 4-bit adder en de output van de 4-bit adders met de output som. De carry-output van de 4-bit adder gaat naar de CarryIn input van de volgende 4-bit adder. De Carry-outputs worden als volgt berekent: </p>
+    <p>C1 = G0 + (P0 . c0)</p>
+    <p>C2 = G1 + (P1 . G0) + (P1 . P0 . c0)</p>
+    <p>De CarryIn van de eerste 4-bit adder is een gewone CarryIn.</p>
+    <p>Ten slotte verbinden we nog een output voor de overflow aan de laatste 4-bit adder.</p>
+    <p><i>Implementatie in Logisim:</i></p>
+    <img src="Foto/exercise2.3.2.png">
+</section>
+  
+<section>
+    <h2>Oefening 4</h2>
+    <p>Door volgend systeem te gebruiken kan je zien dat er telkens dezelfde resultaten komen waardoor je kan afleiden dat de carry lookahead klopt.</p>
+    <img src="Foto/exercise2.4.png">
+</section>
+   
+
+    </body>
+
+</html>
+
+

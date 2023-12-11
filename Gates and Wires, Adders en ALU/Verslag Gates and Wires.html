@@ -1,0 +1,144 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<!-- Het "u" element (underline) is geherdefinieerd voor overline -->
+<style type="text/css">u {text-decoration: overline;}
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  table, th, td {
+    border: 1px solid black;
+  }
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+</head>
+
+<body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Gates and Wires</i></p>
+<p>Dit verslag werd opgesteld door: Lorek Jeremi en Faisal Mohamed Ahmed<br />
+<ul>
+<li><b>Naam:</b> <i>Lorek Jeremi</i><br />
+<b>Studentennummer:</b> <i>20231362</i><br />
+<b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i>
+</li>
+<b>Naam:</b> <i>Faisal Mohamed Ahmed</i><br />
+<b>Studentennummer:</b> <i>20203014</i><br />
+<b>Email adres:</b> <i>Faisal.MohamedAhmed@student.uantwerpen.be</i>
+
+</ul>
+<b>Aantal man-uren besteed:</b> <i>8 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>5</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="Foto/exercise1.3.png">exercise1.3.png</a>: foto van exercise 3</li>
+<li><a href="Foto/exercise1.4.png">exercise1.4.png</a>: foto van exercise 4</li>
+<li><a href="Foto/exercise1.5.png">exercise1.5.png</a>: foto van exercise 5</li>
+<li><a href="Foto/voorstelling%20in%20letters.PNG">voorstelling in letters.png</a>: foto van de voorstelling van het 7 segmenten display in letters</li>
+<li><a href="Foto/waarheidstabel1.5.PNG">waarheidstabel1.5.png</a>: foto van de waarheidstabel van exercise 5</li>
+<li><a href="CSA%201.circ">CSA 1.circ</a>: Logisim bestand van dit project</li>
+
+
+
+</ul>
+
+<h2>Verslag</h2>
+
+
+<section>
+  <h2>Oefening 1</h2>
+  <h3>De Morgan's theorema (a)</h3>
+  <table>
+    <tr>
+      <th>A</th><th>B</th><th>A + B</th><th>!(A + B)</th><th>!A</th><th>!B</th><th>!A · !B</th>
+    </tr>
+    <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  </table>
+  <h3>De Morgan's theorema (b)</h3>
+  <table>
+    <tr>
+      <th>A</th><th>B</th><th>A · B</th><th>!(A · B)</th><th>!A</th><th>!B</th><th>!A + !B</th>
+    </tr>
+    <tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  </table>
+</section>
+
+<section>
+<h2>Oefening 2</h2>
+<p><strong>Distributiviteit:</strong></p>
+<p>E = (A &sdot; B + A &sdot; C + B &sdot; C) &sdot; !(A &sdot; B &sdot; C)</p>
+
+<p><strong>De Morgan's wetten:</strong></p>
+<p>E = (A &sdot; B + A &sdot; C + B &sdot; C) &sdot; (!A + !B + !C)</p>
+
+<p><strong>Distributiviteit (opnieuw toegepast):</strong></p>
+<p>E = A &sdot; B &sdot; !A + A &sdot; B &sdot; !B + A &sdot; B &sdot; !C + A &sdot; C &sdot; !A + A &sdot; C &sdot; !B + A &sdot; C &sdot; !C + B &sdot; C &sdot; !A + B &sdot; C &sdot; !B + B &sdot; C &sdot; !C</p>
+
+<p><strong>Wet van het complement:</strong></p>
+<p>E = 0 + 0 + A &sdot; B &sdot; !C + 0 + A &sdot; !B &sdot; C + 0 + !A &sdot; B &sdot; C + 0 + 0</p>
+
+<p><strong>Vereenvoudigen (neutraal element en eliminatie van nultermen):</strong></p>
+<p>E = A &sdot; B &sdot; !C + A &sdot; !B &sdot; C + !A &sdot; B &sdot; C</p>
+</section>
+
+<section>
+  <h2>Oefening 3</h2>
+  <ul>
+    <li>Een NOT-poort kan worden gemaakt door beide ingangen van een NAND-poort te verbinden met hetzelfde signaal.</li>
+    <li>Een AND-poort wordt geconstrueerd door de uitgang van een NAND-poort te nemen en deze door een andere NAND-poort te voeren die als NOT-poort fungeert.</li>
+    <li>Een OR-poort constructie wordt gerealiseerd door de negatie van elke input door een aparte NAND-poort (gebruikt als een NOT-poort) te voeren en vervolgens de uitgang van deze twee NAND-poorten naar een derde NAND-poort te leiden.</li>
+  </ul>
+  <img src="Foto/exercise1.3.png"
+</section>
+
+<section>
+<h2>Oefening 4</h2>
+<p>Eerst leiden we de Booleaanse uitdrukkingen af en later implementeren we deze dan in Logisim. </p>
+<p>X = (!A.!B.!C) + (!A.!B.C) + (A.!B.!C)</p>
+<p>Y = (!A.!B.!C) + (!A.!B.C) + (A.!B.!C) + (!A.B.!C) + (A.B.!C)</p>
+<img src="Foto/exercise1.4.png">
+</section>
+
+<section>
+<h2>Oefening 5</h2>
+<p>Eerst hebben we een letter gegeven aan elk 'lampje' van het 7 segmenten display.(behalve het kleine puntje)</p>
+<img src="Foto/voorstelling%20in%20letters.PNG">
+<p>Op basis van dit en hetgeen wat we in de opgave hebben gekregen, hebben we vervolgens een waarheidstabel opgebouwd voor elke letter.</p>
+<img src="Foto/waarheidstabel1.5.PNG">
+<p>Nu kunnen wij de Booleaanse algebra hiervan afleiden. Aangezien er veel nullen staan in de tabel hebben we ervoor gekozen, om in plaats van, voor elke letter naar de 1-en te kijken, naar de nullen te kijken, bij de letters die minder nullen dan 1-en hebben. </p>
+<p>!a = (!A.!B.C) + (A.!B.!C)</p>
+<p>!b = (A.!B.C) + (A.B.!C)</p>
+<p>!c = (!A.B.!C)</p>
+<p>!d = (!A.!B.C) + (A.!B.!C) + (A.B.C)</p>
+<p>e = (!A.!B.!C) + (!A.B.!C) + (A.B.!C)</p>
+<p>f = (!A.!B.!C) + (A.!B.!C) + (A.!B.C) + (A.B.!C)</p>
+<p>!g = (!A.!B.!C) + (!A.!B.C) + (A.B.C)</p>
+<p></p>
+<p>Als we dit implementeren in Logisim krijgen we het volgende:</p>
+<img src="Foto/exercise1.5.png">
+</section>
+
+</body>
+
+</html>
+
+
