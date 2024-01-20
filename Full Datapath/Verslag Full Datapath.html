@@ -1,0 +1,114 @@
+<html>
+
+<head>
+<title>Verslag</title>
+<style type="text/css">
+    body {
+      background: linear-gradient(to right, #e0f7fa, #e0f2f1);
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    html {
+  scroll-behavior: smooth;
+    }
+  
+    h1, h2, h3 {
+      color: #0277bd;
+    }
+  
+    p {
+      line-height: 1.6;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    li {
+      margin-bottom: 10px;
+    }
+  
+    a {
+      color: #0288d1;
+      text-decoration: none;
+    }
+  
+    a:hover {
+      text-decoration: underline;
+    }
+  
+    u {
+      text-decoration: overline;
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Verslag</h1>
+<p><b>Titel:</b> <i>Full Datapath</i></p>
+<p>Dit verslag werd opgesteld door: Lorek Jeremi<br />
+<ul>
+<li><b>Naam:</b> <i>Lorek Jeremi</i><br />
+<b>Studentennummer:</b> <i>20231362</i><br />
+<b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i>
+</li>
+</ul>
+<b>Aantal man-uren besteed:</b> <i>25 uur</i><br />
+<b>Moeilijkheidsgraad:</b> <i>8.5</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+<h2>Inhoud van de oplossing</h2>
+<p>De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+<ul>
+<li><a href="Foto/FullDatapath.png">Full Datapath</a>: Foto van het eindresultaat, het volledige datapath</li>
+<li><a href="Foto/decoder.png">Decoder</a>: Foto van de decoder</li>
+<li><a href="Foto/controller.png">Controller</a>: Foto van de Controller</li>
+<li><a href="Foto/program counter.png">Full Datapath</a>: Foto van de program counter</li>
+<li><a href="FD_Group65.circ">Full Datapath.circ</a>: Logisim (.circ) file van dit project</li>
+
+</ul>
+
+<h2>Verslag</h2>
+
+<p>Voor dit project moesten de branch en jump instructies nog toegevoegd worden aan het Simple Datapath (vorig project). Ik ben hieraan begonnen door eerst de decoder aan te passen. </p>
+
+<h3>Decoder</h3>
+<p>Aan de decoder moest er een nieuwe output toegevoegd worden, namelijk Target Adress. Ook moesten er een aantal aanpassingen gemaakt worden aan de stappen tot de outputs. Aangezien er enkele nieuwe operaties bij gekomen zijn, heb ik
+  net zoals in het vorige project, een soort van if-statements gemaakt door middel van comparators en multiplexers. Zo heb ik ervoor kunnen zorgen dat elke output de juiste waarde geeft.
+</p>
+<img src="Foto/decoder.png">
+<p>Deze foto toont de decoder van het project. De Target Adress is de nieuwe output die toegevoegd moest worden. De andere outputs zijn hetzelfde als in het vorige project.</p>
+
+<h3>Controller</h3>
+
+<p>Aan de controller moesten er ook nieuwe outputs gegeven worden. Ik heb eerst de nieuwe branch en jump operaties toegevoegd als een AND-gate zoals de andere operaties.
+    Vervolgens heb ik, voor elke van de jump en branch operaties, een nieuwe output toegevoegd. Deze nieuwe outputs zijn letterlijk de naam van de operatie. (beq, blt, j, jal, jr).
+    Daarna heb ik ook nog de juiste ALU-code gegeven bij de nieuwe operaties en ten slotte heb ik er ook nog voor gezorgd dat er een correct werkende RegWrite is.
+</p>
+<img src="Foto/controller.png">
+<p>Deze foto toont de controller van het project. De nieuwe outputs zijn de outputs die beginnen met een 'j' of een 'b'. De andere outputs zijn hetzelfde als in het vorige project.</p>
+
+<h3>Program Counter</h3>
+
+<p>Aan de program counter is er ook nog een kleine aanpassing gebeurt. Aangezien er in de description van de nieuw toegevoegde instructies, meerdere keren PC + 1 staat,
+     heb ik een extra output toegevoegd aan het circuit van de program counter. Deze nieuwe output heeft de waarde van PC + 1 die het dan makkelijker maakt om de nieuwe operaties te implementeren. </p>
+<img src="Foto/program counter.png">
+<p>Deze foto toont de program counter van het project. De nieuwe output is diegene die op de foto op waarde 1 staat. De andere output is hetzelfde als die van het vorige project.</p>
+
+<h3>Full Datapath</h3>
+<p>Na al deze 'kleine' veranderingen in de andere circuits, kon ik de nieuwe instructies implementeren in het volledige datapad. Door de nieuwe instructies, zijn de Branch Absolute en Branch Relative nu niet
+    meer een constante nul, maar heb ik deze aangepast door de nieuwe outputs van de controller. De jr,j en jal output van de controller zorgen ervoor dat de branch absolute aan of uit staat. De beq en blt, samen met de uitkomst van de ALU, 
+    zorgen ervoor dat de branch relative aan of uit staat. De nieuwe outputs van de controller zijn ook verbonden met verschillende multiplexers, om ervoor te zorgen dat de juiste waarden worden doorgegeven bij inputs van de ALU, inputs
+    van het register of de input van de program counter. 
+ </p>
+<img src="Foto/FullDatapath.png">
+<p>Deze foto toont het volledige datapad van het project. Dit is het uitgewerkte geheel dat de operaties uitwerkt.</p>
