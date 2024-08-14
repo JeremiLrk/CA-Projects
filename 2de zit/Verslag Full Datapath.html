@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verslag</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #388E3C;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .large-image {
+            width: 90%;
+        }
+
+        h2, h3 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .file-list {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .file-list li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .file-list a {
+            font-weight: bold;
+            text-decoration: underline;
+            color: #4CAF50;
+            transition: color 0.3s ease;
+        }
+
+        .file-list a:hover {
+            color: #388E3C;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox.active ~ .container {
+            filter: blur(10px);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Verslag</h1>
+        <p class="animated"><b>Titel:</b> <i>2de Zit</i></p>
+        <p class="animated">Dit verslag werd opgesteld door: Lorek Jeremi</p>
+        <ul class="animated">
+            <li><b>Naam:</b> <i>Lorek Jeremi</i></li>
+            <li><b>Studentennummer:</b> <i>20231362</i></li>
+            <li><b>Email adres:</b> <i>Jeremi.Lorek@student.uantwerpen.be</i></li>
+        </ul>
+        <p class="animated"><b>Aantal man-uren besteed:</b> <i>15 uur</i></p>
+        <p class="animated"><b>Moeilijkheidsgraad:</b> <i>6</i> /10 (1 is heel makkelijk, 10 is heel moeilijk)</p>
+
+        <h2 class="animated">Inhoud van de oplossing</h2>
+        <p class="animated">De oplossing bestaat uit de volgende bestanden (geef alle bestanden op):</p>
+        <ul class="file-list animated">
+            <li><a href="Foto/FullDatapath.png">Full Datapath</a>: Foto van het eindresultaat, het volledige datapath</li>
+            <li><a href="Foto/decoder.png">Decoder</a>: Foto van de decoder</li>
+            <li><a href="Foto/controller.png">Controller</a>: Foto van de Controller</li>
+            <li><a href="Foto/program counter.png">Program Counter</a>: Foto van de program counter</li>
+            <li><a href="Foto/Ripple Carry Adder.png">Ripple Carry Adder</a>: Foto van de Ripple Carry Adder</li>
+            <li><a href="Foto/12 bit adder carry lookahead.png">12 bit Adder Carry Lookahead</a>: Foto van de 12 bit adder carry lookahead</li>
+            <li><a href="Foto/16-bit ALU.png">16-bit ALU</a>: Foto van de 16-bit ALU</li>
+            <li><a href="Foto/zero.png">Zero</a>: Foto van de Zero operatie</li>
+            <li><a href="Foto/not.png">NOT</a>: Foto van de NOT operatie</li>
+            <li><a href="Foto/and.png">AND</a>: Foto van de AND operatie</li>
+            <li><a href="Foto/or.png">OR</a>: Foto van de OR operatie</li>
+            <li><a href="Foto/add.png">ADD</a>: Foto van de ADD operatie</li>
+            <li><a href="Foto/sub.png">SUB</a>: Foto van de SUB operatie</li>
+            <li><a href="Foto/lt.png">Less Than (LT)</a>: Foto van de Less Than operatie</li>
+            <li><a href="Foto/gt.png">Greater Than (GT)</a>: Foto van de Greater Than operatie</li>
+            <li><a href="Foto/eq.png">Equal (EQ)</a>: Foto van de Equal operatie</li>
+            <li><a href="Foto/neq.png">Not Equal (NEQ)</a>: Foto van de Not Equal operatie</li>
+            <li><a href="Foto/inv.png">Invert (INV)</a>: Foto van de Invert operatie</li>
+            <li><a href="Foto/sll.png">Shift Left Logical (SLL)</a>: Foto van de Shift Left Logical operatie</li>
+            <li><a href="Foto/srl.png">Shift Right Logical (SRL)</a>: Foto van de Shift Right Logical operatie</li>
+            <li><a href="Foto/sla.png">Shift Left Arithmetic (SLA)</a>: Foto van de Shift Left Arithmetic operatie</li>
+            <li><a href="Foto/sra.png">Shift Right Arithmetic (SRA)</a>: Foto van de Shift Right Arithmetic operatie</li>
+            <li><a href="Foto/noop.png">No Operation (NOOP)</a>: Foto van de No Operation operatie</li>
+            <li><a href="Foto/16 bit register.png">16-bit Register</a>: Foto van het 16-bit register</li>
+            <li><a href="Foto/register file.png">Register File</a>: Foto van de Register File</li>
+            <li><a href="Foto/main.png">Main Datapath</a>: Foto van het volledige datapath</li>
+            <li><a href="ALU_LorekJeremi.circ">ALU.circ</a>: Logisim (.circ) file van dit project</li>
+            <li><a href="CSA 2.circ">Adders.circ</a>: Logisim (.circ) file van dit project</li>
+            <li><a href="CSA 4.circ">Memory.circ</a>: Logisim (.circ) file van dit project</li>
+            <li><a href="SD_LorekJeremi.circ">Full Datapath.circ</a>: Logisim (.circ) file van dit project</li>
+        </ul>
+
+        <h2 class="animated">Verslag 2de zit</h2>
+        <p class="animated">Voor dit project moest ik de projecten van het eerste semester uitbreiden van 12 bit naar 16 bit.</p>
+
+        <h3 class="animated">Adders</h3>
+        <p class="animated">Het eerste project waar ik aan begonnen ben, was het project van de adders. Ik heb de adders uitgebreid van 12 bit naar 16 bit. Eerst heb ik de ripple carry adder uitgebreid door meer 1 bit adders toe te voegen en die te verbinden met elkaar en natuurlijk de input en output 16 bit gemaakt.</p>
+        <img src="Foto/Ripple Carry Adder.png" class="animated">
+        <p class="animated">Deze foto toont de Ripple carry adder van het project.</p>
+        <br>
+        <br>
+        <br>
+        <p class="animated">Daarna heb ik de 12 bit adder carry lookahead uitgebreid door het niet te laten werken met 3 4-bit adders maar met 4 4-bit adders. Natuurlijk heb ik ook nog de input en output uitgebreid tot 16 bits.</p>
+        <img src="Foto/12 bit adder carry lookahead.png" class="animated">
+        <p class="animated">Deze foto toont de 12 bit adder carry lookahead van het project.</p>
+        <br>
+        <br>
+        <br>
+        <h3 class="animated">ALU</h3>
+
+        <p class="animated">Na de adders heb ik de ALU uitgebreid. Hierbij zijn alle instructies hetzelfde gebleven als ervoor en heb ik ze gewoon uitgebreid van 12 bit naar 16 bit.</p>
+        <img src="Foto/16-bit ALU.png" class="animated">
+        <img src="Foto/zero.png" class="animated">
+        <img src="Foto/not.png" class="animated">
+        <img src="Foto/and.png" class="animated">
+        <img src="Foto/or.png" class="animated">
+        <img src="Foto/add.png" class="animated">
+        <img src="Foto/sub.png" class="animated">
+        <img src="Foto/lt.png" class="animated">
+        <img src="Foto/gt.png" class="animated">
+        <img src="Foto/eq.png" class="animated">
+        <img src="Foto/neq.png" class="animated">
+        <img src="Foto/inv.png" class="animated">
+        <img src="Foto/sll.png" class="animated">
+        <img src="Foto/srl.png" class="animated">
+        <img src="Foto/sla.png" class="animated">
+        <img src="Foto/sra.png" class="animated">
+        <img src="Foto/noop.png" class="animated">
+        <p class="animated">Deze foto's tonen de ALU zelf en alle operaties</p>
+        <br>
+        <br>
+        <br>
+        <h3 class="animated">Memory</h3>
+
+        <p class="animated">In het project memory heb ik eerst het 12-bit register uitgebreid tot 16 bit. Ik heb de inputs en outputs uitgebreid tot 16 bit en de 12 D flip-flops uitgebreid naar 16 D flip-flops.</p>
+        <img src="Foto/16 bit register.png" class="animated">
+        <br>
+        <p class="animated">Vervolgens heb ik de input en output van het register file uitgebreid naar 16 bit.</p>
+        <img src="Foto/register file.png" class="animated">
+        <br>
+        <br>
+        <br>
+
+        <h3 class="animated">Datapath</h3>
+        <p class="animated">Uiteindelijk heb ik in het gedeelte van het datapath enkel de program counter uitgebreid van 12 bit naar 16 bit.</p>
+        <img src="Foto/Program Counter.png" class="animated">
+        <br>
+        <br>
+        <p class="animated">Uiteindelijk is dit het datapath dat er hetzelfde uitziet als het datapath gemaakt in het eerste semester.</p>
+        <img src="Foto/main.png" class="large-image animated">
+        <p class="animated">Deze foto toont het volledige datapad van het project. Dit is het uitgewerkte geheel dat de operaties uitwerkt.</p>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img" src="" alt="Vergrote afbeelding">
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                lightboxImg.src = image.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
